@@ -1,10 +1,8 @@
 <template>
     <div class="person">
-        <ul>
-            <li v-for="(item, index) in list" :key="index">
-                {{item}}
-            </li>
-        </ul>
+        <hr>
+        <img v-for="(item, index) in imgList" :key="index" :src="item" alt=""><br>
+        <button @click="addImg">来一张</button>
     </div>
 </template>
 
@@ -13,14 +11,13 @@
     //传出 defineExpose
     //导入 defineProps
 
-    import { type Persons } from '../types'
-    
+    import useDog from '@/hooks/useGetImg'
+    const { imgList, addImg } = useDog()
+
+
     watchEffect(() => {
         
     })
-
-    defineProps<{list?: Persons}>()
-
 </script>
 
 
@@ -37,5 +34,9 @@
     }
     li {
         font-size: 20px;
+    }
+    img {
+        height: 100px;
+        margin-right: 5px;
     }
 </style>
